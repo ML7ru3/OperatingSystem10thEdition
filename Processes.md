@@ -35,6 +35,8 @@
 
 > Interrupt happens when exists **system calls** different from running state to waiting state
 
+> **Waiting = Blocking**
+
 # Process Scheduling
 
 > When process from ready state to running state
@@ -93,7 +95,7 @@ pid = wait(&status)
 - If parent terminated without invoking **wait()**, process is an **orphan**
 
 ## Zombie process
-- When a child process is killed, the entry of the process table keeps, among other things, information about the way the child existed
+- When a child process is killed, the entry of the process table keeps, among other things, information about the way the child existed **(PID, exit status,...)**
 - When the parent executes **wait()**, it fetches the information from the child entry in the process table, then the kernel removes the child entry in the process 
 - Between the time a child exits and wait() is executed, the child is called a **zombie**
 > If the parent never executes **wait()**, the zombie process might stay in the system until OS reboot.
@@ -106,6 +108,8 @@ pid = wait(&status)
 
 # Interprocess Communication
 - Processes within a system may be *independent* or *cooperating*
+
+- **Inter-process communication** is a mechanism that allows processes to communicate.
 
 - Cooperating process can affect or be affected by other processes, including sharing data, reason:
   - Information sharing
@@ -204,8 +208,17 @@ pid = wait(&status)
   - Addresses in the executable are mapped to physical addresses at run time. **Binding is delayed until run time**
   - Most OS use this binding method
 
+## Physical Address Space
+- A physical address space is the actual address space in the main memory, used by MMU (Memory Management Unit)
+- The term "physical" refers to precise.
 
-  # Signal
+## Logical Address Space
+- Also called virtual address space, which is a generated address space by CPU when executing a program.
+- These will be translated by the OS (MMU) into physical address space.
+
+
+
+# Signal
 - Signals are predefined messages initiated by a process, the kernel or a user and sent to another process
   - SIGHUP 1 *hangup*
   - SIGINT 2 *interrupt*
