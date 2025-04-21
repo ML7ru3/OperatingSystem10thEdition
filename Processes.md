@@ -11,7 +11,7 @@
  ---
 
 - **Process** - a program in execution
-   Multiple part of a process:
+- Multiple part of a process:
     - The program code **(text section)**
     - Current activity including **program counter**, processor registers
     - **Stack** containing temporary data *(function params, return addresses, local var)*
